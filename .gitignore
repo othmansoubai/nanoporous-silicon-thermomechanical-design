@@ -1,0 +1,22 @@
+# Raw MD numerical traces are distributed separately as an archive.
+data/raw/
+
+# Local/cluster provenance data, credentials, and simulation logs.
+*.tar.gz
+*.zip
+*.log
+*.err
+*.out
+*PROVENANCE*
+
+# Temporary and local working outputs.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+geometry/generated_structures/
+
+# Windows local upload helper and its notes are not research files.
+UPLOAD_TO_GITHUB.cmd
+WINDOWS_UPLOAD_INSTRUCTIONS.txt
