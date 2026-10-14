@@ -17,12 +17,12 @@
 #
 # All coordinates in LATTICE UNITS (unit cells), a=5.431 Å
 #
-# Usage:
-#   lmp -var seed   12345 \
-#       -var label  grpB_fullstagger_28pct \
-#       -var pAxlo  0 -var pAxhi  4 -var pAylo  0 -var pAyhi  4 \
-#       -var pBxlo  4 -var pBxhi  8 -var pBylo  4 -var pByhi  8 \
-#       -in in.nemd_porous_parametric
+# Example: from the inputs/ directory (contains Si.sw):
+#   lmp -var seed 12345 \
+#       -var label INV1_AR2.5_s37 \
+#       -var pAxlo 0 -var pAxhi 5 -var pAylo 0 -var pAyhi 2 \
+#       -var pBxlo 3 -var pBxhi 8 -var pBylo 3 -var pByhi 5 \
+#       -in in.nemd_inv1
 # ============================================================
 
 # ── NEMD parameters ─────────────────────────────────────────

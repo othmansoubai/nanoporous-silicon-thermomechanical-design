@@ -2,7 +2,7 @@
 
 ## Raw materials and provenance
 
-The 17-geometry κ dataset derives from 51 independently executed LAMMPS 20-bin thermal runs; the mechanical data consist of 51 training traces and 3 INV1 traces. Reproducibility checks on the numerical source material confirmed 394/394 SHA-256 file hashes and numerical reproduction of 51 training κ values and 54 E values. The separately prepared raw-data asset intentionally omits scheduler logs and private paths.
+The 17-geometry κ dataset derives from 51 independently executed LAMMPS 20-bin thermal runs; the mechanical data consist of 51 training traces and 3 INV1 traces. The public `data/processed/mechanical_runs_54.csv` lists all 54 per-seed elastic evaluations (including the three INV1 seeds), while `data/processed/thermal_runs_51_with_QC.csv` covers only the 17 training thermal geometries. Reproducibility checks on the numerical source material confirmed 394/394 SHA-256 file hashes and numerical reproduction of 51 training κ values and 54 E values. The separately prepared raw-data asset intentionally omits scheduler logs and private paths.
 
 `data/processed/all_18_corrected.csv`: includes 17 training structures and one `held_out_candidate`. Sample SD across three seeds, not confidence bounds. The pristine bulk is included among 17 training geometries but excluded from the 16-porous-model regressions.
 
