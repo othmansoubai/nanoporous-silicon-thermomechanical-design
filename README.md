@@ -1,140 +1,64 @@
-# Machine-learning-guided thermomechanical design of nanoporous silicon
+# Nanoporous silicon thermomechanical design
 
-Code and data for a study of geometry-controlled thermal conductivity and
-mechanical stiffness in nanoporous silicon, combining non-equilibrium molecular
-dynamics, uniaxial tensile simulations, Gaussian-process regression, and
-multi-objective design analysis.
+**Current research dataset: 22 measured geometries, with prospective surrogate validation.** This public repository contains selected numerical data and code for molecular-dynamics-based geometry control of thermal transport and directional stiffness in nanoporous silicon, alongside exploratory Gaussian-process (GP) modeling and multi-objective design analysis.
 
-The work examines **17 training geometries**, including nonporous silicon,
-and a separately evaluated inverse-design candidate (**INV1**). The numerical
-results presented here were independently reproduced from the simulation
-outputs. Thermal conductivity is measured along **z** (κ_z), while Young's
-modulus is obtained under loading along **x** (E_x); these are different
-directions and should not be treated as equivalent material responses.
+The combined study comprises **17 original training geometries** (including pristine bulk silicon), the historically inverse-designed **INV1** candidate, and **four new orientation-validation structures**. There are three independently seeded thermal and mechanical MD runs per geometry: **66 NEMD runs and 66 tensile runs** overall.
 
-**Key result.** INV1 (37.5% stagger, pore aspect ratio 2.5) has
-**κ_z = 2.5352 ± 0.0430 W m⁻¹ K⁻¹** and **E_x = 68.394 ± 0.152 GPa**
-(three-seed means ± sample standard deviations). The geometry belongs to the
-nine-member measured Pareto front over the 18 evaluated structures and
-dominates six original designs. It **approaches but does not satisfy** the
-original simultaneous target limits κ_z ≤ 2.4 W m⁻¹ K⁻¹ and E_x ≥ 70 GPa.
+**Transport and loading directions differ:** thermal conductivity is measured in the **z** direction (κ_z) and elastic modulus in the **x** direction (E_x). The data reflect finite simulation cells and the classical Stillinger–Weber interatomic potential; they are not experimentally validated or length-converged bulk silicon properties.
 
-**Authors:** Othman Soubai, Younes Abouelhanoune, and Mohammed Taibi —
-LSA Laboratory, National School of Applied Sciences of Al Hoceima (ENSAH),
-Abdelmalek Essaâdi University, Morocco.
+## Main results
 
-> **Repository status:** This public repository provides research data,
-> analysis code, molecular-dynamics input files, and reproducibility notes
-> for the study described below. Public availability does not imply
-> journal acceptance or the assignment of a publication DOI.
+- **INV1 (historical inverse-design case):** corrected κ_z = **2.5352 ± 0.0430 W/(m·K)** and E_x = **68.394 ± 0.152 GPa**, mean ± sample SD from three seeds. INV1 meets **neither** original hard simultaneous target (κ_z ≤ 2.4 W/(m·K) and E_x ≥ 70 GPa).
+- **Prospective GP property validation:** Four new pore geometries were evaluated in two equal-porosity rotation pairs *after* GP predictions were frozen. The wide structures show approximately **41.0%** and **53.2%** higher measured E_x than their tall counterparts. Corresponding κ_z differences in the sample means are **−0.42%** and **−5.25%**. With three seeds, these comparisons do **not** establish formal conductivity equivalence.
+- **Predictive limits:** The frozen GP correctly predicts the direction of the mechanical orientation contrast but underestimates its size. The four new geometries validate *property prediction*, not a newly GP-optimized inverse-design structure. INV1 is historical; comparing it to the updated four-descriptor GP is retrospective.
+- **Multi-objective summary:** the 22 measured means contain **10 mean-value non-dominated structures**, with Pareto classification based on means rather than statistically propagated dominance probabilities.
 
----
+## Data: current version and provenance
 
-## What is here
+| File | Meaning |
+| --- | --- |
+| [`data/processed/corrected_22_measured_geometries.csv`](data/processed/corrected_22_measured_geometries.csv) | **Current** 22-structure mean κ_z and E_x dataset |
+| [`data/processed/pareto_front_22_mean_values.csv`](data/processed/pareto_front_22_mean_values.csv) | **Current** 10-member measured mean-value front |
+| [`data/processed/pass7_seed_results_all12.csv`](data/processed/pass7_seed_results_all12.csv) | Individual results for four new geometries × three seeds per property |
+| [`data/processed/pass7_summary_all4.csv`](data/processed/pass7_summary_all4.csv) | Means, sample SDs, frozen GP predictions and signed relative errors |
+| [`data/jobs/pass7_geometry_manifest.csv`](data/jobs/pass7_geometry_manifest.csv) | Construction coordinates for the four prospective orientation geometries |
+| [`data/processed/all_18_corrected.csv`](data/processed/all_18_corrected.csv) | **Historical** 17 training structures plus held-out INV1 |
+| [`data/processed/training_17_corrected.csv`](data/processed/training_17_corrected.csv) | Baseline training dataset |
+| [`data/processed/thermal_runs_51_with_QC.csv`](data/processed/thermal_runs_51_with_QC.csv) | Original 51 NEMD seed observations and analysis diagnostics |
+| [`data/processed/mechanical_runs_54.csv`](data/processed/mechanical_runs_54.csv) | Original 54 tensile seed results including INV1 |
+| [`data/processed/pareto_front_18.csv`](data/processed/pareto_front_18.csv) | **Historical** nine-member front for only 18 structures |
 
-```text
-data/processed/  training and combined datasets, QC summaries,
-                 descriptors, surrogate-model assessments and Pareto front
-data/jobs/       numerical geometry and simulation-configuration manifests
-analysis/        scripts for GP validation, Pareto reconstruction,
-                 plotting and raw-data reduction
-geometry/        independently verified atom-count and geometry builders
-inputs/          LAMMPS input decks and the Stillinger–Weber potential file
-figures/         measured thermomechanical Pareto front
-docs/            reproducibility notes and release checklist
-```
+Older inputs and analysis scripts are kept to preserve scientific provenance. The repository does **not** claim that earlier 18-geometry scripts already regenerate the updated 22-geometry figures. [`SHA256SUMS_RELEASE.txt`](SHA256SUMS_RELEASE.txt) records the historical repository's previous release content and should not be treated as a checksum manifest for this new 22-geometry revision.
 
-### `data/processed/`
+## Reproduce public-data results and figures
 
-| File | Contents |
-|---|---|
-| `training_17_corrected.csv` | 17 training geometries with κ_z and E_x |
-| `all_18_corrected.csv` | 17 training geometries plus INV1, kept identifiable as held out |
-| `physical_descriptors_18.csv` | geometry-derived descriptors defined independently of measured responses |
-| `thermal_runs_51_with_QC.csv` | per-seed NEMD results and quality checks |
-| `mechanical_runs_54.csv` | per-seed tensile results, including INV1 |
-| `physical4_family_holdout_predictions.csv` | predictions when each geometry family is excluded in turn |
-| `pareto_front_18.csv` | measured non-dominated set, nine structures |
-
-**Important:** INV1 was excluded from fitting and cross-validation of the
-17-geometry training dataset. It is a separately evaluated design candidate;
-the four-descriptor GP comparison is **retrospective**, not evidence
-that this specific surrogate prospectively selected the architecture.
-
-### Numerical methods
-
-- **Thermal:** Müller–Plathe reverse NEMD with the Stillinger–Weber
-  potential, a 20-slab temperature profile along *z*, exchange interval of
-  100 steps, and 500 ps production. Thermal conductivities are based on
-  late-time energy transfer and temperature-gradient fitting. There are
-  51 production runs for the 17 training geometries.
-- **Mechanical:** initial tensile slope under loading along *x*, fitted over
-  engineering strain 0.0005–0.005, with three seeds per geometry.
-- **Models:** the main physically interpretable GP uses porosity,
-  projected obstruction, pore-orientation descriptor and shift magnitude.
-  Its leave-one-family-out MAE is **0.1882 W m⁻¹ K⁻¹** for κ_z and
-  **3.0558 GPa** for E_x (16 porous training structures). Model selection
-  was exploratory, and transferability outside these geometries is limited.
-
-## Reproduce the analysis
-
-Use Python with NumPy, SciPy, pandas, scikit-learn and Matplotlib:
+Recommended Python 3.11 with packages in [`requirements.txt`](requirements.txt):
 
 ```bash
 python -m pip install -r requirements.txt
-python analysis/reproduce_pareto.py
-python analysis/reproduce_gp.py
-python analysis/plot_corrected.py
+python analysis/validate_public_update.py
+python analysis/make_public_figures.py --only all
 ```
 
-To reproduce the original numerical reductions from raw MD outputs, obtain
-the separately prepared **raw-data ZIP** and extract its `data/raw/` directory
-inside this repository's `data/` directory. Then run:
+Each new public-data figure has its own function/slot inside [`analysis/make_public_figures.py`](analysis/make_public_figures.py):
 
-```bash
-python analysis/reproduce_raw.py
-```
+1. `geometry()` → `fig_pass10_matched_footprints.pdf`
+2. `orientation_seeds()` → `fig_pass10_pass7_per_seed.pdf`
+3. `pareto22()` → `fig_pareto22_public.pdf`
+4. `nemd_sensitivity()` → `fig_pass10_nemd_window_sensitivity.pdf`
 
-The raw-data package contains temperature profiles, cumulative transfer
-energy and stress–strain traces for the 18 designs, with three seeds each.
-It is intended for an archival release asset rather than ordinary Git
-history. See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) for
-precise fitting windows, GP settings, and known limitations.
+See [`docs/FIGURE_REPRODUCIBILITY.md`](docs/FIGURE_REPRODUCIBILITY.md) and [`docs/PASS7_VALIDATION.md`](docs/PASS7_VALIDATION.md) for mappings and scientific qualifications. Earlier sources and their analysis remain in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 
-## Notes on interpretation
+## Raw simulation data and limitations
 
-**Atom-counted porosity.** Porosity is measured from atoms removed from the
-constructed simulation cell, not estimated from a nominal geometric area.
-For INV1 the correct values are 24,576 atoms before deletion and 19,843
-after deletion, giving 19.2586% porosity. One archived input prints an
-incorrect `0%` because of a logging-variable evaluation defect. The
-constructed geometry and simulation outputs are not affected.
+The original numerical-reduction archive and full Pass 7 raw MD trajectories, frozen pre-MD predictions, SLURM logs, and unpublished manuscript files are maintained by the authors **outside this public GitHub repository**. Consequently, plots dependent on those raw files cannot be fully regenerated from this lightweight public repository alone. Public checksums confirm the integrity of the two Pass 7 numerical CSVs, but do not imply all raw MD inputs are publicly distributed.
 
-**Thermal and mechanical axes differ.** The reported conductivity κ_z and
-modulus E_x probe different directions of the nanoporous architecture.
+Three-seed sample standard deviations quantify seed-to-seed variation; they are not confidence bounds or a complete uncertainty budget. The finite MD cells, system length, limited geometry families, and preliminary GP transfer limit the generality of conclusions.
 
-**Model and size limitations.** These results are for finite simulation
-cells using the Stillinger–Weber silicon potential. They are not direct
-experimental predictions, and do not establish full length convergence.
-The small design set and the retrospective comparison for INV1 limit
-claims of general-purpose surrogate prediction or prospective optimization.
+## Citation, authors and licensing
 
-## Citation
+**Manuscript status:** under author review, not yet accepted. Until a journal publication or curated DOI is available, reference the **exact Git commit** used for the results. No DOI has been assigned to this revision.
 
-Please cite the corresponding manuscript when published. Until then, cite
-the versioned repository release and its commit identifier. A final
-publication DOI has not yet been assigned here.
+Othman Soubai, Younes Abouelhanoune, Mohammed Taibi — LSA Laboratory, ENSAH, Abdelmalek Essaâdi University, Morocco. Corresponding author: othman.soubai@etu.uae.ac.ma.
 
-## Contact
-
-Othman Soubai — othman.soubai@etu.uae.ac.ma
-
-LSA Laboratory, ENSAH, Abdelmalek Essaâdi University, Al Hoceima, Morocco.
-
-## Licensing
-
-This repository is publicly accessible, but a license for the authors'
-original project code and numerical datasets has not yet been selected.
-Public visibility does not itself grant permission to reuse or redistribute
-these materials. Licensing terms and redistribution rights for the included
-third-party `inputs/Si.sw` parameter file remain under review.
+No new license has been selected for the original code and numerical data; public access does not itself grant broad redistribution rights. The redistribution terms for third-party `inputs/Si.sw` still require separate confirmation.

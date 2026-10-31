@@ -1,0 +1,15 @@
+paper_figure_order,output_pdf,reproducibility_tier,generator_or_status
+1,fig1_4panel_slices.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
+2,fig_pass10_matched_footprints.pdf,public,PUBLIC analysis/make_public_figures.py --only geometry
+3,fig_pareto.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
+4,fig_pass10_measured_thermal_profiles.pdf,author_private,PRIVATE RAW build_figures_pass10_private_raw.py (requires raw_source/)
+5,fig_ml_validation.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
+6,fig_pass10_mechanical_stress_strain.pdf,author_private,PRIVATE RAW build_figures_pass10_private_raw.py (requires raw_source/)
+7,fig_pass10_stagger_stiffness.pdf,author_private,PRIVATE RAW build_figures_pass10_private_raw.py (requires raw_source/)
+8,fig_inverse_selection.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
+9,fig6_inv1_planview.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
+10,fig_validation.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
+11,fig_pass7_gp_md.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
+12,fig_pass10_pass7_per_seed.pdf,public,PUBLIC analysis/make_public_figures.py --only orientation
+13,fig_pass7_pareto22.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
+14,fig_pass10_nemd_window_sensitivity.pdf,public,PUBLIC analysis/make_public_figures.py --only sensitivity
