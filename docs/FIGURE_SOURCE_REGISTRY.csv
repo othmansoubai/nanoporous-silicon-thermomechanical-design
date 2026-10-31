@@ -1,15 +1,15 @@
-paper_figure_order,output_pdf,reproducibility_tier,generator_or_status
-1,fig1_4panel_slices.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
-2,fig_pass10_matched_footprints.pdf,public,PUBLIC analysis/make_public_figures.py --only geometry
-3,fig_pareto.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
-4,fig_pass10_measured_thermal_profiles.pdf,author_private,PRIVATE RAW build_figures_pass10_private_raw.py (requires raw_source/)
-5,fig_ml_validation.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
-6,fig_pass10_mechanical_stress_strain.pdf,author_private,PRIVATE RAW build_figures_pass10_private_raw.py (requires raw_source/)
-7,fig_pass10_stagger_stiffness.pdf,author_private,PRIVATE RAW build_figures_pass10_private_raw.py (requires raw_source/)
-8,fig_inverse_selection.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
-9,fig6_inv1_planview.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
-10,fig_validation.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
-11,fig_pass7_gp_md.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
-12,fig_pass10_pass7_per_seed.pdf,public,PUBLIC analysis/make_public_figures.py --only orientation
-13,fig_pass7_pareto22.pdf,legacy_unverified,LEGACY frozen PDF (figure-generator audit pending)
-14,fig_pass10_nemd_window_sensitivity.pdf,public,PUBLIC analysis/make_public_figures.py --only sensitivity
+paper_figure_order,output_pdf,source_tier,author_verified_plot_status,reproduction_command,source_basis,qualification
+1,fig1_4panel_slices.pdf,author_held_reconstruction,REGENERATED_HISTORICAL_ATOM_STRUCTURE,python reproduction/rebuild_figure1.py [author-held research package],historical Si lattice builder + four pore coordinates,Rebuilds structures and slab not MD trajectories
+2,fig_pass10_matched_footprints.pdf,public_processed_data,REGENERATED_PUBLIC_DATA,python analysis/make_public_figures.py --only geometry,public geometry manifest,Original audited generator
+3,fig_pareto.pdf,author_held_reconstruction,REGENERATED_CORRECTED_DATA,python reproduction/regenerate_eight.py [author-held research package],corrected 17-geometry per-seed summaries,9-of-17 Pareto uses measured means
+4,fig_pass10_measured_thermal_profiles.pdf,author_held_reconstruction,REGENERATED_PRIVATE_RAW,python build_figures_pass10_private_raw.py [author-held research package],selected private NEMD source records,Original audited generator
+5,fig_ml_validation.pdf,author_held_reconstruction,REGENERATED_TABLE_VALUES,python reproduction/regenerate_eight.py [author-held research package],summary values from Table tab:models in manuscript,GP folds not independently retrained
+6,fig_pass10_mechanical_stress_strain.pdf,author_held_reconstruction,REGENERATED_PRIVATE_RAW,python build_figures_pass10_private_raw.py [author-held research package],selected private tensile traces,Original audited generator
+7,fig_pass10_stagger_stiffness.pdf,author_held_reconstruction,REGENERATED_PRIVATE_RAW,python build_figures_pass10_private_raw.py [author-held research package],selected private tensile traces,Original audited generator
+8,fig_inverse_selection.pdf,author_held_reconstruction,REGENERATED_GEOMETRIC_SCHEMATIC,python reproduction/regenerate_eight.py [author-held research package],integer-cell pore footprints in manuscript,No GP ranking depicted
+9,fig6_inv1_planview.pdf,author_held_reconstruction,REGENERATED_GEOMETRIC_SCHEMATIC,python reproduction/regenerate_eight.py [author-held research package],INV1 transverse footprint bounds,Illustrates coordinates not transport measurements
+10,fig_validation.pdf,author_held_reconstruction,REGENERATED_CORRECTED_DATA,python reproduction/regenerate_eight.py [author-held research package],17 training means plus INV1,9-of-18 descriptive Pareto
+11,fig_pass7_gp_md.pdf,author_held_reconstruction,REGENERATED_FROZEN_PREDICTIONS,python reproduction/regenerate_eight.py [author-held research package],Pass7 GP pre-MD predictions and measured summaries,Does not rerun GP fitting
+12,fig_pass10_pass7_per_seed.pdf,public_processed_data,REGENERATED_PUBLIC_DATA,python analysis/make_public_figures.py --only orientation,Pass7 public per-seed observations,Original audited generator
+13,fig_pass7_pareto22.pdf,author_held_reconstruction,REGENERATED_CORRECTED_DATA,python reproduction/regenerate_eight.py [author-held research package],22 measured property means,10-of-22 descriptive Pareto
+14,fig_pass10_nemd_window_sensitivity.pdf,public_processed_data,REGENERATED_PUBLIC_DATA,python analysis/make_public_figures.py --only sensitivity,original thermal QC summary,Original audited generator

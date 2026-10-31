@@ -1,24 +1,23 @@
-# Proposed next update to public repository
+# Publication history — nanoporous silicon thermomechanical repository
 
-Target: https://github.com/othmansoubai/nanoporous-silicon-thermomechanical-design
+**Status (31 October 2026): the 22-geometry / Pass 7 scientific update has ALREADY been published.** Earlier wording in this file described the update as a *proposed overlay*; that historical planning language is superseded by the records below.
 
-This is an **overlay** for the existing public repository, not a replacement for its original data, history, scripts or LAMMPS inputs.
+## Published scientific update
 
-Added (without overwriting the existing 18-row baseline):
+- Repository: https://github.com/othmansoubai/nanoporous-silicon-thermomechanical-design
+- Branch: `main` (no replacement branch, no history rewrite, no force-push)
+- Scientific update commit: [`ac8a5742110f5e56c54b11d40dbd19307cbbe0c7`](https://github.com/othmansoubai/nanoporous-silicon-thermomechanical-design/commit/ac8a5742110f5e56c54b11d40dbd19307cbbe0c7)
+- Prior commit: `0de9bd5559b196a4f62f3afde9cbf94986bd17eb` (historical 18-geometry revision)
+- The published commit added the 22-case dataset, four prospective orientation observations (12 seeds per property), 10-member mean-value Pareto listing, geometry manifest, public figure script, numerical validation, and four PDF figure assets.
 
-- `data/processed/corrected_22_measured_geometries.csv`
-- `data/processed/pareto_front_22_mean_values.csv`
-- `data/processed/pass7_seed_results_all12.csv`
-- `data/processed/pass7_summary_all4.csv`
-- `data/jobs/pass7_geometry_manifest.csv`
-- `analysis/make_public_figures.py`
-- four reproducible vector PDF charts under `figures/`
-- `docs/PASS7_VALIDATION.md`
-- `docs/FIGURE_REPRODUCIBILITY.md`
-- `docs/PUBLIC_UPDATE_NOTES.md`
+All original training/inverse-design source files were preserved as historical records. The earlier 18-case scripts/figures are not claimed to regenerate the updated 22-case results. `SHA256SUMS_RELEASE.txt` describes the original release, **not** the current tree; use the commit SHA to identify the version.
 
-**Do not commit:** personal MARWAN directories, compute-node SLURM logs, the full 21 MB raw Pass 7 archive, LAMMPS inputs with unverified third-party redistribution rights, or manuscripts that have not received coauthor approval. The public four-geometry CSVs do not replace the author-held hashes of the original pre-MD prediction freeze.
+## Documentation synchronization
 
-**No license or publication DOI is asserted.** Reuse permissions, citation metadata and exact target journal must be approved by the authors. README update remains a proposed addition until a versioned Git commit actually contains these files.
+Following subsequent author-held figure-source reconstruction, the public docs `FIGURE_REPRODUCIBILITY.md` and `FIGURE_SOURCE_REGISTRY.csv` describe the complete **14-figure provenance mapping** while labeling which scripts and raw inputs remain private. This is a documentation-only correction and is not a new MD dataset or numerical finding. These documentation edits receive their own Git commit when published.
 
-**Important chronology:** commit `0de9bd5` is an earlier corrected 18-geometry baseline. Once this overlay is merged to `main`, obtain the new commit SHA and only then update the article's Data and Code Availability text to cite that exact new version; do not reuse the previous 18-geometry-only commit to claim Pass 7 availability.
+## Explicit exclusions
+
+Do **not** commit private MARWAN user directories, full raw Pass 7 archives, private SLURM logs, unpublished supervisor-review manuscripts, or third-party LAMMPS parameter sets without verified permission. Public processed values are not equivalent to raw trajectory release or independent retraining of all historical GP folds.
+
+The manuscript has not yet been journal-accepted. The exact journal, license, raw-data deposition plan, and any editorial declarations remain for coauthor approval. This documentation note does not create a journal DOI, a license, or a new paper release.
