@@ -1,0 +1,52 @@
+{
+  "utc_generated": "2026-11-04T01:40:36.169333+00:00",
+  "repository_commit": "7f7ad6ffc6a0fbaae38655408556a61bddc1dd2c",
+  "sklearn_version": "1.8.0",
+  "numpy_version": "1.26.4",
+  "training_labels": [
+    "P1_high_50pct",
+    "A_S2_d2",
+    "A_S2.5_d2",
+    "A_S3_d2",
+    "A_S4.5_d2",
+    "B_S4_aligned_low",
+    "B_S4_quarter_low",
+    "B_S4_aligned_high",
+    "B_S4_quarter_high",
+    "C_d0_aligned",
+    "C_d1_12pct",
+    "C_d3_37pct",
+    "C_d4_50pct",
+    "D_AR0.5_tall",
+    "D_AR2.0_wide",
+    "D_AR2.5_vwide",
+    "INV1_AR2.5_s37",
+    "ORI35_T_s2",
+    "ORI35_W_s2",
+    "ORI25_T_s1",
+    "ORI25_W_s1"
+  ],
+  "features": [
+    "phi_actual",
+    "projected_obstruction",
+    "orientation_chi",
+    "shift_mag_uc"
+  ],
+  "original_box_diagnostic": {
+    "kappa_max": 2.4,
+    "E_min": 70.0
+  },
+  "best_original_box_score": 4.559252258590204e-05,
+  "hypervolume_reference": {
+    "kappa": 4.322624203603897,
+    "kappa_fraction_of_pristine": 0.4,
+    "E": 40.0
+  },
+  "monte_carlo": {
+    "samples": 20000,
+    "seed": 20261104
+  },
+  "selection_rule": "batch of 2 by Monte-Carlo expected hypervolume improvement of the measured 22-cell mean front (min kappa_z, max E_x), Kriging-believer update between picks; candidates restricted to the training feature range and not previously simulated (incl. x<->y transpose)",
+  "script_sha256": "263799f5b1845d7d34e28053b08cf717938a0e27428e77318f233c184720362f",
+  "interpretation": "PROSPECTIVE GP-selected design candidates, frozen before any MD"
+}

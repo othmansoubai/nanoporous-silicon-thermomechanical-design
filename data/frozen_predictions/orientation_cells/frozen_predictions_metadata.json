@@ -1,0 +1,15 @@
+{
+  "utc_generated": "2026-10-15T19:58:25.180512+00:00",
+  "repository_commit": "0de9bd5559b196a4f62f3afde9cbf94986bd17eb",
+  "sklearn_version": "1.8.0",
+  "training_n_porous": 16,
+  "features": [
+    "phi_actual",
+    "projected_obstruction",
+    "orientation_chi",
+    "shift_mag_uc"
+  ],
+  "manifest_sha256": "c108165c2e910b7f46cc6ec59eeba24aa340fff84185fcc0b09a65f6b5218d1c",
+  "predictions_sha256": "712e116947b39faa4e57992df680215019fa66eb63516f4f7f5f1cba394fdde1",
+  "interpretation": "PROSPECTIVE predictions for orientation controls before MD; not the historical INV1 design selection"
+}
