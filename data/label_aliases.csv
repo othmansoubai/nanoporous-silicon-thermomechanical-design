@@ -1,0 +1,3 @@
+label,raw_file_label,note
+B_S2_aligned_low,B_S4_aligned_low,2x2 pores aligned; renamed Nov 2026 (old name said S4); raw MD files keep the historical name
+B_S2_d4_low,B_S4_quarter_low,2x2 pores shifted by 4 uc; renamed Nov 2026 (old name said S4); raw MD files keep the historical name

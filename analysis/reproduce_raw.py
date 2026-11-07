@@ -15,6 +15,8 @@ RAW = ROOT/'data/raw'
 PROC= ROOT/'data/processed/all_18_corrected.csv'
 EV=1.602176634e-19
 A=(8*5.431e-10)**2
+# Raw MD files keep their historical names (see data/label_aliases.csv).
+RAW_LABEL={'B_S2_aligned_low':'B_S4_aligned_low','B_S2_d4_low':'B_S4_quarter_low'}
 
 def profiles(p):
     lines=p.read_text().splitlines()
@@ -57,7 +59,7 @@ def main():
         mechanical_seeds=thermal_seeds
         k=[];e=[]
         for seed in thermal_seeds:
-            stem=f'{label}_seed{seed}'
+            stem=f'{RAW_LABEL.get(label,label)}_seed{seed}'
             k.append(calc_kappa(RAW/'thermal'/f'temp_profile_{stem}.dat',RAW/'thermal'/f'e_transfer_{stem}.dat'))
             e.append(calc_E(RAW/'mechanical'/f'stress_strain_{stem}.dat'))
         vals=(np.mean(k),np.std(k,ddof=1),np.mean(e),np.std(e,ddof=1))
